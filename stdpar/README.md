@@ -20,3 +20,14 @@ A is square, 2 RHS in B.  Increase N scale up when profiling
 and preserve source integrity when running on the CPU.
 
 `-stdpar` also treats all Fortran allocatable arrays as managed memory.
+
+## C++
+
+We will look at a saxpy example using standard C++. 
+
+To compile, use 
+```
+nvc++ -stdpar ./saxpy_stdpar.cpp
+```
+
+This will compile our executable ready for the GPU. 
