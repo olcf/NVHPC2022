@@ -1,8 +1,9 @@
 program testdgetrf
 
+  !@acc use cutensorex
+
   implicit none
 
-  !@acc use cutensorex
   integer, parameter :: M = 1000, N = M, NRHS=2
   real(8), allocatable :: A(:,:), B(:,:), X(:,:),ASAVE(:,:)
   integer, allocatable :: IPIV(:)
