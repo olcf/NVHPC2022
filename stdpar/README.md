@@ -11,7 +11,7 @@ There are some macros to determine how you want to do the last verification: `-D
 
 This compile/link line should pull everything in for GPU:
 ```
-nvfortran tdgetrf.F90 -stdpar -cuda -gpu=nvlamath -cudalib=nvlamath,cutensor,curand
+nvfortran testdgetrf.F90 -stdpar -cuda -gpu=nvlamath -cudalib=nvlamath,cutensor,curand
 ```
 
 A is square, 2 RHS in B.  Increase N scale up when profiling
