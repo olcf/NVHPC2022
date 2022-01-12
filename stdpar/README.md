@@ -7,10 +7,10 @@ the CPU or GPU, depending on the compilation/linking options, i.e.
 
 ```
 # CPU
-nvfortran testdgetrf.F90 -lblas # or other BLAS library
+nvfortran -o testdgetrf_cpu testdgetrf.F90 -lblas # or other BLAS library
 
 # GPU
-nvfortran testdgetrf.F90 -stdpar -cuda -gpu=nvlamath,cuda11.4 -cudalib=nvlamath,curand
+nvfortran -o testdgetrf_gpu testdgetrf.F90 -stdpar -cuda -gpu=nvlamath,cuda11.4 -cudalib=nvlamath,curand
 ```
 
 Note that because we use the `-stdpar` option in the GPU build, all Fortran allocatable arrays
@@ -23,26 +23,26 @@ We will look at a saxpy example using standard C++.
 
 To compile for the GPU, we will use:
 ```
-nvc++ -stdpar=gpu -gpu=cc80 ./saxpy_stdpar.cpp
+nvc++ -stdpar=gpu -o saxpy_gpu ./saxpy.cpp
 ```
 
-The `-stdpar=gpu` command will enable the compiler to generate code that can run on the GPU. The default to this command is `=gpu` so you do not need to explicitly use that opition, but I find it helpful. `-gpu=cc80` simply says that we are targeting A100 GPUs, the GPUs on Perlmutter.
-
-This will compile our executable ready for the GPU. 
+The `-stdpar=gpu` command will enable the compiler to generate code that can run on the GPU.
+(The default is `gpu` so you do not need to explicitly use that option, but it is useful to
+be explicit, especially when switching between CPU and GPU platforms.)
 
 To run the code:
 ```
-sbatch batch.sh
+sbatch submit_saxpy.sh
 ```
 
 You should see SUCCESS written to the slurm output file in your directory. In the profiling section, we will see how to confirm that this code ran on the GPU using Nsight Systems.
 
 Now we can repeat the process and target CPU parallelism using the `-stdpar=multicore` command.
 ```
-nvc++ -stdpar=multicore ./saxpy_stdpar.cpp
+nvc++ -stdpar=multicore -o saxpy_cpu ./saxpy.cpp
 ```
 
-Rerun your code with:
+Update the executable name in the run script and try again:
 ```
-sbatch batch.sh
+sbatch submit_saxpy.sh
 ```

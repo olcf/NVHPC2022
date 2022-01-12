@@ -10,4 +10,4 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --gpus-per-task=1
 
-srun ./a.out 
+srun ./saxpy_stdpar_gpu
