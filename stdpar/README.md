@@ -48,10 +48,6 @@ use managed memory, and can be used on either the CPU or GPU.
 
 Now update the job script to use the GPU build instead of the CPU build. Again verify the test passes.
 
-```
-sbatch submit_dgetrf.sh
-```
-
 ### Exercise 3
 
 Collect a profile of the GPU application using Nsight Systems. You'll need to update the job script
