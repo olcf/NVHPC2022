@@ -64,28 +64,35 @@ your profiles explicitly (e.g. `nsys profile --stats=true -o dgetrf_1000`).
 
 We will look at a saxpy example using standard C++.
 
-To compile for the GPU, we will use:
+## Exercise 1
+
+Compile for the GPU:
 ```
 nvc++ -stdpar=gpu -o saxpy_gpu ./saxpy.cpp
 ```
 
-The `-stdpar=gpu` command will enable the compiler to generate code that can run on the GPU.
-(The default is `gpu` so you do not need to explicitly use that option, but it is useful to
+(The `-stdpar` default is `gpu` so you do not need to explicitly use that option, but it is useful to
 be explicit, especially when switching between CPU and GPU platforms.)
 
-To run the code:
+Run the code, using the appropriate script for the site you're running at:
 ```
-sbatch submit_saxpy.sh
+# NERSC
+sbatch submit_saxpy_nersc.sh
+
+# OLCF
+bsub -P PROJ123 submit_saxpy_olcf.sh
 ```
+You should see SUCCESS written to the job output file if everything worked.
 
-You should see SUCCESS written to the slurm output file in your directory. In the profiling section, we will see how to confirm that this code ran on the GPU using Nsight Systems.
+## Exercise 2
 
-Now we can repeat the process and target CPU parallelism using the `-stdpar=multicore` command.
+Profile the code with Nsight Systems to verify it actually ran on the GPU.
+
+## Exercise 3
+
+Compile the process for CPU parallelism using the `-stdpar=multicore` command.
 ```
 nvc++ -stdpar=multicore -o saxpy_cpu ./saxpy.cpp
 ```
 
-Update the executable name in the run script and try again:
-```
-sbatch submit_saxpy.sh
-```
+Run the job with the new executable and verify correct execution.

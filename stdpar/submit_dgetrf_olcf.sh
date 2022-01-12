@@ -6,4 +6,4 @@
 #BSUB -o testdgetrf.%J
 #BSUB -e testdgetrf.&J
 
-jsrun -n 1 -a 1 -g 1 -c 1 ./testdgetrf_cpu
+jsrun -n 1 -a 1 -g 1 -c 7 ./testdgetrf_cpu
