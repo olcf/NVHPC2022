@@ -5,6 +5,17 @@
 In this example we are solving a linear system Ax = B where A is square. This test will run on
 the CPU or GPU, depending on the compilation/linking options.
 
+To set up the environment, make sure you have the NVIDIA HPC SDK loaded.
+
+```
+# NERSC (note that PrgEnv-nvidia is the default)
+module load PrgEnv-nvidia
+module load cudatoolkit
+
+# OLCF
+module load nvhpc/21.9
+```
+
 ### Exercise 1
 
 Verify you can compile the code to run on the CPU.
@@ -13,10 +24,15 @@ Verify you can compile the code to run on the CPU.
 nvfortran -o testdgetrf_cpu testdgetrf.F90 -lblas # or other BLAS library
 ```
 
-Submit the job and make sure the output of the test passes.
+Now submit the job and make sure the output of the test passes. Which script you use
+will depend on the site you're running at.
 
 ```
-sbatch submit_dgetrf.sh
+# NERSC
+sbatch submit_dgetrf_nersc.sh
+
+# OLCF
+bsub -P PROJ123 submit_dgetrf_olcf.sh
 ```
 
 ### Exercise 2
