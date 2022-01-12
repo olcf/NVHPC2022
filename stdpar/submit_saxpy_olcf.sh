@@ -6,4 +6,6 @@
 #BSUB -o saxpy.%J
 #BSUB -e saxpy.&J
 
+module load nvhpc/21.9
+
 jsrun -n 1 -a 1 -g 1 -c 7 ./saxpy_gpu

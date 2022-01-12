@@ -10,4 +10,7 @@
 #SBATCH --ntasks-per-node=1
 #SBATCH --gpus-per-task=1
 
+module load PrgEnv-nvidia
+module load cudatoolkit
+
 srun ./testdgetrf_cpu

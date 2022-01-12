@@ -6,4 +6,6 @@
 #BSUB -o testdgetrf.%J
 #BSUB -e testdgetrf.&J
 
+module load nvhpc/21.9
+
 jsrun -n 1 -a 1 -g 1 -c 7 ./testdgetrf_cpu
