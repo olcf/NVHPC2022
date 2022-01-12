@@ -13,4 +13,4 @@
 module load PrgEnv-nvidia
 module load cudatoolkit
 
-srun ./saxpy_stdpar_gpu
+srun ./saxpy_gpu
