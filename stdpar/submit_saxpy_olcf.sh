@@ -8,4 +8,4 @@
 
 module load nvhpc/21.9
 
-jsrun -n 1 -a 1 -g 1 -c 7 ./saxpy_gpu
+jsrun -n 1 -a 1 -g 1 -c 7 --smpiargs="-disable_gpu_hooks" ./saxpy_gpu
