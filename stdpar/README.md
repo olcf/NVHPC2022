@@ -16,6 +16,12 @@ module load cudatoolkit
 module load nvhpc/21.9
 ```
 
+*If you're running at OLCF, make sure that you are doing these examples from GPFS,
+for example the `$MEMBERWORK` directory. That is necessary for generating the profile
+output in these exercises since your home directory is read-only in a job.*
+
+For NERSC users we also recommend not running in your home directory (`$SCRATCH` should be fine).
+
 ### Exercise 1
 
 Verify you can compile the code to run on the CPU.
