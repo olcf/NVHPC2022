@@ -1,30 +1,25 @@
-# Standard Language Parallel
+# Standard Language Parallelism
 
 ## Fortran
 
-This test will run on the CPU or GPU, depending on the compilation/linking options, i.e.
+In this example we are solving a linear system Ax = B where A is square. This test will run on
+the CPU or GPU, depending on the compilation/linking options, i.e.
+
 ```
-nvfortran tdgetrf.F90 -lblas (or other BLAS library)
+# CPU
+nvfortran testdgetrf.F90 -lblas # or other BLAS library
+
+# GPU
+nvfortran testdgetrf.F90 -stdpar -cuda -gpu=nvlamath,cuda11.4 -cudalib=nvlamath,curand
 ```
 
-There are some macros to determine how you want to do the last verification: `-DUSE_CUBLAS`, `-DUSE_DOCONCURRENT`, or the default do loop.
-
-This compile/link line should pull everything in for GPU:
-```
-nvfortran testdgetrf.F90 -stdpar -cuda -gpu=nvlamath -cudalib=nvlamath,cutensor,curand
-```
-
-A is square, 2 RHS in B.  Increase N scale up when profiling
-
-`-stdpar` turns on OpenACC recognition, so you can use !@acc as a macro short-cut,
-and preserve source integrity when running on the CPU.
-
-`-stdpar` also treats all Fortran allocatable arrays as managed memory.
+Note that because we use the `-stdpar` option in the GPU build, all Fortran allocatable arrays
+use managed memory, and can be used on either the CPU or GPU.
 
 
 ## C++
 
-We will look at a saxpy example using standard C++. 
+We will look at a saxpy example using standard C++.
 
 To compile for the GPU, we will use:
 ```
