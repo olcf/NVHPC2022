@@ -1,5 +1,6 @@
 #!/bin/bash
 #SBATCH -A ntrain4_g
+#SBATCH --reservation=nvhpc_day1
 #SBATCH -C gpu
 #SBATCH -G 1
 #SBATCH -q regular
