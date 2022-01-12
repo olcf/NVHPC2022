@@ -6,4 +6,4 @@ Each subdirectory has code examples for each of the different programming models
 
 # Standard Language Parallelism
 
-The `stdpar` directory contains examples of using Fortran standard language parallelism (`do concurrent` and other concepts) and C++17 standard langauge parallelism (`std::for_each` and related concepts).
+The `stdpar` directory contains examples of using Fortran standard language parallelism (`do concurrent`, math libraries, and related concepts) and C++17 standard language parallelism (`std::transform`, `std::for_each`, and related concepts).
