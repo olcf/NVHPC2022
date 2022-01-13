@@ -24,7 +24,9 @@ For NERSC users we also recommend not running in your home directory (`$SCRATCH`
 In this exercise, we give you a serial code that implements Jacobi relaxation to
 solve the Laplace equation. Your task is to port it to run on a GPU. You may choose
 to use either OpenMP or OpenACC to do the offload. You may also choose whether to do
-the exercise in C or in Fortran.
+the exercise in C or in Fortran. We recommend using explicit data statements in this
+example; however, if you prefer to rely on managed memory, make sure you add the
+`-gpu=managed` flag to the compile statements below.
 
 After editing the code, compile it using one of the following:
 
