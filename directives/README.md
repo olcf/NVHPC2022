@@ -30,10 +30,10 @@ After editing the code, compile it using one of the following:
 
 ```
 # OpenACC, C
-nvc -acc -Minfo=accel -o laplace laplace.c
+nvc -acc=gpu -Minfo=accel -o laplace laplace.c
 
 # OpenACC, Fortran
-nvfortran -acc -Minfo=accel -o laplace laplace.f90
+nvfortran -acc=gpu -Minfo=accel -o laplace laplace.f90
 
 # OpenMP, C
 nvc -mp=gpu -Minfo=mp -o laplace laplace.c
