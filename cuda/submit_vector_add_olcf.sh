@@ -2,9 +2,9 @@
 #BSUB -U NVIDIA_SDK_2
 #BSUB -W 0:05
 #BSUB -nnodes 1
-#BSUB -J hello
-#BSUB -o hello.%J
-#BSUB -e hello.&J
+#BSUB -J vadd
+#BSUB -o vadd.%J
+#BSUB -e vadd.&J
 
 module load nvhpc/21.9
 
