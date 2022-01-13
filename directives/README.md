@@ -30,16 +30,16 @@ After editing the code, compile it using one of the following:
 
 ```
 # OpenACC, C
-nvc -acc -o laplace laplace.c
+nvc -acc -Minfo=accel -o laplace laplace.c
 
 # OpenACC, Fortran
-nvfortran -acc -o laplace laplace.f90
+nvfortran -acc -Minfo=accel -o laplace laplace.f90
 
 # OpenMP, C
-nvc -mp=gpu -o laplace laplace.c
+nvc -mp=gpu -Minfo=mp -o laplace laplace.c
 
 # OpenMP, Fortran
-nvfortran -mp=gpu -o laplace laplace.f90
+nvfortran -mp=gpu -Minfo=mp -o laplace laplace.f90
 ```
 
 After compiling the code, submit the job and make sure the output of the test
@@ -56,4 +56,9 @@ bsub -P PROJ123 submit_laplace_olcf.sh
 Verify using `nsys profile --stats=true` that any kernels you generated
 actually ran on the GPU.
 
-You may consult the example solutions if you get stuck and need help.
+You may consult example solutions if you get stuck and need help:
+
+`laplace_acc.c`: OpenACC, C
+`laplace_acc.f90`: OpenACC, Fortran
+`laplace_omp.c`: OpenMP, C
+`laplace_omp.f90`: OpenMP, Fortran
