@@ -8,6 +8,10 @@ Each subdirectory has code examples for each of the different programming models
 
 The `stdpar` directory contains examples of using Fortran standard language parallelism (`do concurrent`, math libraries, and related concepts) and C++17 standard language parallelism (`std::transform`, `std::for_each`, and related concepts).
 
+# Directives
+
+The `directives` directory contains examples using OpenMP and OpenACC.
+
 # CUDA
 
 The `cuda` directory contains CUDA C++ examples.
